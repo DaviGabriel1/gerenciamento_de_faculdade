@@ -5,6 +5,9 @@
 ### Conceitual
 ![img.png](modelo_conceitual.png)
 
+### Lógico
+![img.png](modelo_logico.png)
+
 ## Diagrama de Casos De Uso
 
 ## Diagrama de Classes
