@@ -9,6 +9,8 @@
 ![img.png](modelo_logico.png)
 
 ## Diagrama de Casos De Uso
+![img.png](casos_de_uso.png)
+
 
 ## Diagrama de Classes
 
