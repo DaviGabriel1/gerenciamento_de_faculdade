@@ -14,6 +14,7 @@
 
 ## Diagrama de Classes
 
+![diagrama_de_classes.drawio.png](diagrama_de_classes.drawio.png)
 # Levantamento de Requisitos
 
 ## Requisitos Funcionais
