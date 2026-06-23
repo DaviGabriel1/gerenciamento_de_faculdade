@@ -14,8 +14,8 @@ import java.time.OffsetDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "usuario")
+@Entity(name = "UsuarioIam")
+@Table(name = "iam_usuario")
 @EntityListeners(AuditingEntityListener.class)
 public class Usuario {
     @Id
@@ -34,6 +34,9 @@ public class Usuario {
     private OffsetDateTime deletadoEm;
     @Enumerated(EnumType.STRING)
     private Discrepancia discrepancia;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Role role;
 
     public String getNomeCompleto() {
         return this.nome + " " + this.sobrenome;

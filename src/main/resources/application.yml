@@ -1,0 +1,15 @@
+spring:
+  config:
+    import: optional:file:.env
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 50MB
+springdoc:
+  default-produces-media-type: application/json
+
+server:
+  servlet:
+    context-path: /api/
+  port: 8081
