@@ -19,6 +19,6 @@ public class Aluno {
     private Turma turma;
     @Column(name = "curso_id", unique = true)
     private Long cursoId;
-    @OneToOne(mappedBy = "aluno")
+    @OneToOne(mappedBy = "usuarioId")
     private Historico historico;
 }

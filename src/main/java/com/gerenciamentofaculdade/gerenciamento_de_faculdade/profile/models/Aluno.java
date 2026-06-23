@@ -18,6 +18,4 @@ public class Aluno {
     private String ra;
     @OneToOne(fetch = FetchType.LAZY)
     private EnderecoAluno enderecoAluno;
-    @OneToMany(mappedBy = "profile_aluno")
-    private List<TelefonesUsuario> telefonesUsuario;
 }

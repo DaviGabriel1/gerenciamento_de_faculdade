@@ -10,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,7 +22,6 @@ import java.time.LocalDateTime;
 public class Usuario {
     @Id
     private Long id;
-
     private String nome;
     private String sobrenome;
     @Column(unique = true, length = 11)
@@ -29,10 +29,10 @@ public class Usuario {
     @Column(unique = true)
     private String email;
     private Character sexo;
-
+    @OneToMany(mappedBy = "usuario")
+    private List<TelefonesUsuario> telefonesUsuario;
     @CreatedDate
     private LocalDateTime criadoEm;
-
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime atualizadoEm;

@@ -34,6 +34,6 @@ public class EnderecoAluno {
     private LocalDateTime deletadoEm;
     @ManyToOne(fetch = FetchType.LAZY)
     private TipoLogradouro tipoLogradouro;
-    @OneToOne(mappedBy = "endereco_aluno")
+    @OneToOne(mappedBy = "enderecoAluno")
     private Aluno aluno;
 }
