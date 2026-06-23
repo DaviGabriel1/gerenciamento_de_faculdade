@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,8 +36,11 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private Discrepancia discrepancia;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER)
     private Role role;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<RefreshToken> refreshToken;
 
     public String getNomeCompleto() {
         return this.nome + " " + this.sobrenome;

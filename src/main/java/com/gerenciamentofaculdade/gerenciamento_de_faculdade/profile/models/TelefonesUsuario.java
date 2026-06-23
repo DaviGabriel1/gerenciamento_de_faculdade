@@ -25,10 +25,8 @@ public class TelefonesUsuario {
     private Usuario usuario;
     @ManyToOne(fetch = FetchType.LAZY)
     private TipoTelefone tipoTelefone;
-
     @CreatedDate
     private LocalDateTime criadoEm;
-
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime atualizadoEm;

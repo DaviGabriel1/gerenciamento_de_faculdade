@@ -1,8 +1,6 @@
 package com.gerenciamentofaculdade.gerenciamento_de_faculdade.academic.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -15,6 +13,12 @@ import lombok.*;
 public class Aluno {
     @Id
     private Long id;
+    @Column(unique = true)
     private String ra;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Turma turma;
+    @Column(name = "curso_id", unique = true)
+    private Long cursoId;
+    @OneToOne(mappedBy = "aluno")
+    private Historico historico;
 }

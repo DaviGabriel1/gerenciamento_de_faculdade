@@ -3,6 +3,8 @@ package com.gerenciamentofaculdade.gerenciamento_de_faculdade.catalog.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -14,4 +16,8 @@ public class Departamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @OneToMany(mappedBy = "departamento")
+    private List<Curso> cursos;
+    @OneToMany(mappedBy = "departamento")
+    private List<Disciplina> disciplinas;
 }

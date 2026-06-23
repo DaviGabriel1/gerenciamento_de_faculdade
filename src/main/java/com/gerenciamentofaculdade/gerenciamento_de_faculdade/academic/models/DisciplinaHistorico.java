@@ -1,5 +1,6 @@
 package com.gerenciamentofaculdade.gerenciamento_de_faculdade.academic.models;
 
+import com.gerenciamentofaculdade.gerenciamento_de_faculdade.academic.models.embedded.DisciplinaHistoricoId;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import lombok.*;

@@ -16,6 +16,6 @@ import lombok.*;
 public class Professor {
     @Id
     private Long id;
-    @Column(name = "departamento_id")
+    @Column(name = "departamento_id", unique = true)
     private Long departamentoId;
 }

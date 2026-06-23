@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "endereco_aluno")
 public class EnderecoAluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +32,8 @@ public class EnderecoAluno {
     @Column(insertable = false)
     private LocalDateTime atualizadoEm;
     private LocalDateTime deletadoEm;
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private TipoLogradouro tipoLogradouro;
+    @OneToOne(mappedBy = "endereco_aluno")
+    private Aluno aluno;
 }

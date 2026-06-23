@@ -17,6 +17,6 @@ public class Historico {
     private Long id;
     @Column(name = "periodo_realizacao")
     private LocalDateTime periodoRealizacao;
-    @Column(name = "usuario_id")
-    private Long usuarioId;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Aluno usuarioId;
 }

@@ -17,4 +17,6 @@ public class Role {
     private Long id;
     @Column(name = "nome_role", unique = true)
     private String nomeRole;
+    @OneToOne(mappedBy = "role")
+    private Usuario usuario;
 }

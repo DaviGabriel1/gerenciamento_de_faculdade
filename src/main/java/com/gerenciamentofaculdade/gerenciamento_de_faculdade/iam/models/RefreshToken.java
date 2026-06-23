@@ -18,6 +18,7 @@ public class RefreshToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String token;
     private OffsetDateTime deletadoEm;
     @ManyToOne(fetch = FetchType.LAZY)

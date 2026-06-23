@@ -3,6 +3,8 @@ package com.gerenciamentofaculdade.gerenciamento_de_faculdade.profile.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -14,6 +16,8 @@ public class Aluno {
     @Id
     private Long id;
     private String ra;
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     private EnderecoAluno enderecoAluno;
+    @OneToMany(mappedBy = "profile_aluno")
+    private List<TelefonesUsuario> telefonesUsuario;
 }
