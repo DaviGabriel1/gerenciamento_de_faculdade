@@ -1,4 +1,4 @@
-package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.enums;
+package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity;
 
 public enum Discrepancia {
     COORDENADOR("coordenador"), PROFESSOR("professor"), ALUNO("aluno");

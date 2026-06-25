@@ -1,7 +1,9 @@
-package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.models;
+package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.access;
 
+import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.OffsetDateTime;
@@ -13,6 +15,8 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "refresh_token")
+// Sobrescreve o comportamento do DELETE nativo
+@SQLDelete(sql = "UPDATE refresh_token SET deletadoEm = CURRENT_TIMESTAMP WHERE id = ?")
 @EntityListeners(AuditingEntityListener.class)
 public class RefreshToken {
     @Id

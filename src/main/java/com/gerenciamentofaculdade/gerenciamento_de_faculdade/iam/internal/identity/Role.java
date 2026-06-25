@@ -1,4 +1,4 @@
-package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.models;
+package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,7 +16,8 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "nome_role", unique = true)
-    private String nomeRole;
+    @Enumerated(EnumType.STRING)
+    private EnumRole nomeRole;
     @OneToOne(mappedBy = "role")
     private Usuario usuario;
 }
