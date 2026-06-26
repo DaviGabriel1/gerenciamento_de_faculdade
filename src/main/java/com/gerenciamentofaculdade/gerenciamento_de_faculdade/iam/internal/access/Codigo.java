@@ -1,13 +1,17 @@
 package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.access;
 
 import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity.Usuario;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Builder
+@Getter
+@Setter
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Codigo {
     @Id
     @GeneratedValue

@@ -28,6 +28,10 @@ spring:
 application:
   security:
     jwt:
-      token:
-        secret-key: ${JWT_SECRET_KEY}
-        expiration: ${JWT_EXPIRATION}
+      secret-key: ${JWT_SECRET_KEY}
+      expiration: ${JWT_EXPIRATION}
+      refresh-token:
+        expiration: ${JWT_REFRESH_EXPIRATION}
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account

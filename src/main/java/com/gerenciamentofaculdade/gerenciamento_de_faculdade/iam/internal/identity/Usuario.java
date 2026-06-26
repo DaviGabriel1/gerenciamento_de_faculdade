@@ -2,10 +2,7 @@ package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.ident
 
 import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.access.RefreshToken;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.jspecify.annotations.Nullable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,6 +16,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "UsuarioIam")

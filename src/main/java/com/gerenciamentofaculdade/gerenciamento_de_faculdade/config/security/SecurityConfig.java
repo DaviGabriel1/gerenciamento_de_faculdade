@@ -44,9 +44,6 @@ public class SecurityConfig {
                                 .requestMatchers(
                                         "/coordenador/**"
                                 ).hasAuthority("coordenador")
-                                .requestMatchers(
-                                        "/all/**"
-                                ).hasAnyAuthority("USER","ADMIN") //usar hasRole apenas se tiver ROLE_ no banco de dados
                                 .anyRequest()
                                 .authenticated()
                 )

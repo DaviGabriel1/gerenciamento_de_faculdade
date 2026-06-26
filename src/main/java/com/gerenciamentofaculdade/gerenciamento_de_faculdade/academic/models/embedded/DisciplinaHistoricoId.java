@@ -1,5 +1,6 @@
 package com.gerenciamentofaculdade.gerenciamento_de_faculdade.academic.models.embedded;
 
+import com.gerenciamentofaculdade.gerenciamento_de_faculdade.catalog.models.Curso;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.*;
