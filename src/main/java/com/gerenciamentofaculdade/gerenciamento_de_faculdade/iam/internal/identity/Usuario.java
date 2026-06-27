@@ -44,7 +44,8 @@ public class Usuario implements UserDetails, Principal {
     @Column(name = "conta_trancada")
     private Boolean contaTrancada=false;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
     @OneToMany(mappedBy = "usuario")

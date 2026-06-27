@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: update #create
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   mail:
@@ -34,4 +34,4 @@ application:
         expiration: ${JWT_REFRESH_EXPIRATION}
   mailing:
     frontend:
-      activation-url: http://localhost:4200/activate-account
+      activation-url: ${ACTIVATION_URL}

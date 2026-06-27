@@ -2,6 +2,7 @@ package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam;
 
 import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity.Usuario;
 import jakarta.mail.MessagingException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,6 +11,7 @@ public interface AuthService {
     AuthenticationResponse autheticate(AuthenticationRequest request);
     void activateAccount(String codigo) throws MessagingException;
     AuthenticationResponse refresh(String uuid);
+    @Transactional
     void logout(String refreshToken);
 
 

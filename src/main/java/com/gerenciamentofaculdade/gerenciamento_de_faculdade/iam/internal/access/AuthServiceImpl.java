@@ -4,13 +4,11 @@ import com.gerenciamentofaculdade.gerenciamento_de_faculdade.catalog.models.Curs
 import com.gerenciamentofaculdade.gerenciamento_de_faculdade.email.EmailService;
 import com.gerenciamentofaculdade.gerenciamento_de_faculdade.email.EmailTemplateName;
 import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.*;
-import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity.RoleRepository;
-import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity.Usuario;
-import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity.UsuarioMapper;
-import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity.UsuarioRepository;
+import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identity.*;
 import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,6 +21,7 @@ import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -47,6 +46,20 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void register(RegisterRequest request) throws MessagingException {
         Usuario usuario = usuarioMapper.toUsuario(request);
+        Optional<Role> roleOptional = roleRepository.getRoleByNomeRole(EnumRole.PADRAO);
+        if (roleOptional.isPresent()) {
+            usuario.setRole(roleOptional.get());
+        }
+        else {
+            usuario.setRole(
+                    roleRepository.save(
+                            Role
+                                    .builder()
+                                    .nomeRole(EnumRole.PADRAO)
+                                    .build()
+                    )
+            );
+        }
         usuario.setSenhaHash(passwordEncoder.encode(usuario.getSenhaHash()));
         usuarioRepository.save(usuario);
         sendValidationEmail(usuario);
@@ -87,7 +100,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public AuthenticationResponse autheticate(AuthenticationRequest request) {
+    public @Nullable AuthenticationResponse autheticate(AuthenticationRequest request) {
         var auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),

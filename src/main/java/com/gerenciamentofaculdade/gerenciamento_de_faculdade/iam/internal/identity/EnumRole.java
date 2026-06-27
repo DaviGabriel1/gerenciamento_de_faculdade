@@ -3,7 +3,8 @@ package com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.ident
 public enum EnumRole {
     COORDENADOR("coordenador"),
     PROFESSOR("professor"),
-    ALUNO("aluno");
+    ALUNO("aluno"),
+    PADRAO("padrao");
     private final String role;
     EnumRole(String role) {
         this.role = role;

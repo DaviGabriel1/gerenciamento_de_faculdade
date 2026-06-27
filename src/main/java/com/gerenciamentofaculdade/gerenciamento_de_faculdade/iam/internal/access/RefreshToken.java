@@ -4,6 +4,7 @@ import com.gerenciamentofaculdade.gerenciamento_de_faculdade.iam.internal.identi
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
@@ -16,8 +17,9 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "refresh_token")
-// Sobrescreve o comportamento do DELETE nativo
-@SQLDelete(sql = "UPDATE refresh_token SET deletadoEm = CURRENT_TIMESTAMP WHERE id = ?")
+@SQLDelete(sql = "UPDATE refresh_token SET deletado_em = CURRENT_TIMESTAMP WHERE id = ?")
+//Filtra automaticamente os registros deletados em todas as buscas (SELECT)
+@SQLRestriction("deletado_em IS NULL")
 @EntityListeners(AuditingEntityListener.class)
 public class RefreshToken {
     @Id
