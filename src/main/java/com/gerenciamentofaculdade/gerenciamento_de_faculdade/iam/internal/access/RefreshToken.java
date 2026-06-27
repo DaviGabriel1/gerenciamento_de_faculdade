@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @Getter
@@ -22,9 +23,14 @@ public class RefreshToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
-    private String token;
-    private OffsetDateTime deletadoEm;
+    @Column(unique = true, nullable = false)
+    private String uuid;
+    @Column(name = "criado_em")
+    private LocalDateTime criadoEm;
+    @Column(name = "expira_em")
+    private LocalDateTime expiraEm;
+    @Column(name = "deletado_em")
+    private LocalDateTime deletadoEm;
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
 }

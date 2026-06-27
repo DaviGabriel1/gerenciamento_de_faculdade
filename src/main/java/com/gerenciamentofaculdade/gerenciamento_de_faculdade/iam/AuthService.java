@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public interface AuthService {
     void register(RegisterRequest request) throws MessagingException;
     AuthenticationResponse autheticate(AuthenticationRequest request);
-    void activateAccount(String codigo);
+    void activateAccount(String codigo) throws MessagingException;
     AuthenticationResponse refresh(String uuid);
     void logout(String refreshToken);
 

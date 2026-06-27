@@ -22,6 +22,7 @@ import java.util.List;
 @Entity(name = "UsuarioIam")
 @Table(name = "iam_usuario")
 @EntityListeners(AuditingEntityListener.class)
+@ToString
 public class Usuario implements UserDetails, Principal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,9 +40,9 @@ public class Usuario implements UserDetails, Principal {
     private OffsetDateTime deletadoEm;
     @Enumerated(EnumType.STRING)
     private Discrepancia discrepancia;
-    private Boolean habilitado;
+    private Boolean habilitado=false;
     @Column(name = "conta_trancada")
-    private Boolean contaTrancada;
+    private Boolean contaTrancada=false;
 
     @OneToOne(fetch = FetchType.EAGER)
     private Role role;
